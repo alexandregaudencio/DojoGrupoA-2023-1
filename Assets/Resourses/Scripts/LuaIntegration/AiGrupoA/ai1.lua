@@ -1,43 +1,49 @@
-name = "batata"
+-- Defina um nomr com até 6 caracteres (sem acentos ou cedilha)
+name = "ALE"
 CharacterBehaviour = nil;
 
-id = 2
-
  function Update() 
-    SetNearPlayerDestination()
+    
+    if Souls() == 0 then
+        CharacterBehaviour.playerAgent.speed = 3.2;
+        SetNearPlayerDestination()
+
+
+    end
+
+
+    if Souls() > 0 then
+        ReturnToBase()
+        CharacterBehaviour.playerAgent.speed = 4.5;
+
+
+    end
+    
+    Attack()
+    -- if IsNear() == true then
+    --     Attack()
+    -- end  
+    
+
+
+
+
+
+
+
 
 
 end
 
 
--- function ReturnToBase() 
---     ReturnToBase()
--- end
+function IsNear() 
+    return (CharacterBehaviour.playerAgent.remainingDistance >= CharacterBehaviour.playerAgent.stoppingDistance+2)
 
--- function Attack() 
---     Attack()
--- end
+end
 
--- function FollowPlayer(PlayerScpt playerScpt)
---     CharacterBehaviour.playerAgent.SetDestination(playerScpt.transform.position)
--- end
+ function Souls() 
 
--- function IsNear() 
---     return CharacterBehaviour.playerAgent.remainingDistance <= CharacterBehaviour.playerAgent.stoppingDistance
+    return CharacterBehaviour.playerScript.Souls;
 
--- end
-
--- function Souls() 
-
---    return CharacterBehaviour.playerScript.Souls;
-
--- end
-
-
--- function Goto(Vetor3 position) 
-
---     CharacterBehaviour.playerAgent.SetDestination(position)
-
--- end
-
+ end
 
